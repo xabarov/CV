@@ -1,0 +1,227 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2021 Jitin Nair
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%	
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%	
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,12pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%cyrillic fonts
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{6pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+% \begin{tabularx}{\linewidth}{ @{}X X@{} }
+% \huge{{Хабаров Роман}}\vspace{2pt} & \hfill \emoji{incoming-envelope} xabarov.roman@gmail.com \\
+% \raisebox{-0.05\height}\faGithub\ username \ | \
+% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
+% \end{tabularx}
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\Huge{Хабаров Роман} \\[7.5pt]
+\Large{Data Scientist} \\[2.5pt]
+\href{https://github.com/xabarov}{\raisebox{-0.05\height}\faGithub\ xabarov} \ $|$ \ 
+% \href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
+% \href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
+\href{mailto:xabarov1985@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ xabarov1985@gmail.com} \ $|$ \ 
+\href{https://elibrary.ru/author_items.asp?authorid=1045982}{\raisebox{-0.05\height}\faFile\ elibrary.ru} \ $|$ \ 
+\href{tel:+79118345456}{\raisebox{-0.05\height}\faMobile \ +7 911 834 54 56} \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+
+%Interests/ Keywords/ Summary
+\section{Краткое резюме}
+Кандидат технических наук. 7 лет в науке (научный сотрудник, начальник лаборатории в ИТМО, МИРЭА, ВКА им. А. Ф. Можайского). После защиты диссертации (2020) занялся ML; стаж в ML — 5 лет. Опыт в CV (детекция объектов, семантическая сегментация на космоснимках) и NLP (классификация, NER, RAG, LLM-агенты). 
+
+%Experience
+\section{Опыт работы}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{ВКА им. А. Ф. Можайского} & \hfill Сентябрь 2017 - Февраль 2024 \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{Работал на должностях научного сотрудника, начальника лаборатории над проектами в областях CV и NLP.
+ 
+\begin{description}
+\item[$\bullet$] \textbf{CV (космическая съёмка):} разработал Python-модуль для детекции и семантической сегментации промышленных объектов на спутниковых снимках; настроил pipeline сбора данных, разметки и обучения. Модели: YOLO, Cascade R-CNN, DeepLabv3, PSANet, PSPNet, UNet, SegFormer.
+\item[$\bullet$] \textbf{GraphRAG:} реализовал модуль построения семантического графа знаний и связывания с онтологией предметной области для улучшения качества ответов RAG-систем.
+\item[$\bullet$] \textbf{Автоматизация пентеста:} разработал консольное приложение на основе LLM-агентов для автоматизации сценариев тестирования на проникновение.
+\item[$\bullet$] \textbf{Система сбора и анализа документов:} построил pipeline сбора, индексации и семантического поиска по корпусу документов.
+\item[$\bullet$] \textbf{Доверенный ИИ:} участвовал в исследовании уязвимостей ML-моделей — проводил тестирование атак на классификаторы текста и модели компьютерного зрения. 
+
+\end{description}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{ИТМО, МИРЭА - Российский технический университет} & \hfill Февраль 2021 - Февраль 2024 \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{
+Работал на должностях младшего и старшего научного сотрудника. Написал 6 модулей для специализированных методик расчёта на C++ (Qt), в том числе с параллезацией на GPU (OpenCL); опыт математического моделирования, разработки под заказ. Участвовал в проектах:
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+\item[--] Создание программно-аппаратного комплекса проведения математического моделирования взаимодействия бортовой радиоэлектронной аппаратуры составных частей КРК «Ангара».
+\item[--] СЧ ОКР «Разработка комплексной системы расчетно-экспериментальной оценки стойкости РН «Ангара-А5М» к попаданию молниевого разряда».
+\end{itemize}
+\end{minipage}
+}
+\end{tabularx}
+
+%Projects
+\section{Проекты}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Most Queue} & \hfill \href{https://github.com/xabarov/most-queue}{GitHub} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{Пакет для имитационного моделирования и расчёта систем массового обслуживания (Python).}  \\
+
+\textbf{OSINT GraphRAG} & \hfill \href{https://github.com/xabarov/osint-graphrag}{GitHub} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{Система извлечения графов знаний из OSINT-текстов: сущности (персоны, организации), связи, дедупликация; семантический поиск (Milvus), чат-интерфейс для запросов на естественном языке (FastAPI, Neo4j, React).}  \\
+
+\textbf{Deep Research Agent} & \hfill \href{https://github.com/xabarov/deep_research}{GitHub} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{Агент глубокого исследования на smolagents: веб-поиск, научные базы (arXiv, PubMed), соцсети, Wikipedia; многоуровневая суммаризация контекста, факт-ориентированная память и векторный поиск (Qdrant); режимы исследования и OSINT-досье (FastAPI, React).}  \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Образование}
+\begin{tabularx}{\linewidth}{@{}l X@{}}	
+2017 - 2020 & PhD (Computer Science, системный анализ, моделирование, компьютерные технологии) \textbf{ВКА им. А. Ф. Можайского} \\
+
+2002 - 2007 & Инженер РЭО \textbf{ИВВАИУ} 
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	PUBLICATIONS
+%----------------------------------------------------------------------------------------
+\section{Публикации}
+\begin{tabularx}{\linewidth}{@{}l X@{}}	
+\multicolumn{2}{@{}X@{}}{
+Большинство публикаций посвящено тематике диссертации (теория очередей). Ведётся работа над публикациями в области ML.
+\begin{minipage}[t]{\linewidth}
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+\item[1.] Лохвицкий, В. А. Численный расчет многоканальной системы массового обслуживания с разогревом, охлаждением и задержкой начала охлаждения / В. А. Лохвицкий, Р. С. Хабаров, Е. Л. Яковлев // Авиакосмическое приборостроение. – 2025. – № 1. – С. 44-57. – DOI 10.25791/aviakosmos.1.2025.1456. – EDN OVJXKE.
+\item[2.] Хабаров, Р. С. Аппроксимация вероятностно-временных характеристик сложных систем массового обслуживания на основе регрессионных моделей машинного обучения / Р. С. Хабаров, Э. С. Левчик, В. А. Лохвицкий // Имитационное моделирование. Теория и практика (ИММОД-2023) : Сборник трудов одиннадцатой всероссийской научно-практической конференции по имитационному моделированию и его применению в науке и промышленности, Казань, 18–20 октября 2023 года. – Казань: Издательство АН РТ, 2023. – С. 735-742. – EDN TMPERE  
+\item[3.] Mochalov, V. F. Processing of Multispectral Survey Materials based on Machine Learning Methods for Forest Management / V. F. Mochalov, R. S. Khabarov // Proceedings of 2021 IV International Conference on Control in Technical Systems (CTS), Saint Petersburg Electrotechnical University “LETI”, 21–23 сентября 2021 года. – IEEE, 2021. – P. 217-219. – DOI 10.1109/CTS53513.2021.9562930. – EDN WWLBGW.  
+\end{itemize}
+\end{minipage}
+}  
+\end{tabularx}
+
+
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Навыки}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+ML/DL & \normalsize{Python, PyTorch, Transformers, HuggingFace, scikit-learn, pandas, OpenCV}\\
+Инфраструктура & \normalsize{FastAPI, Gradio, Docker, Git}\\
+Прочее & \normalsize{C++ (Qt), OpenCL}\\
+Личные качества & \normalsize{Обучаемость, умение работать в команде, аналитический склад ума.}\\  
+\end{tabularx}
+
+\end{document}
